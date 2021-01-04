@@ -1,0 +1,58 @@
+{% extends 'stock/base.html' %}
+{% block title %}
+Category
+{% endblock %}
+
+{% block content %}
+
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-th-list"></i> All User</h1>
+        <!--        <p>Parking exit to display analytical data effectively</p>-->
+    </div>
+    <ul class="app-breadcrumb breadcrumb side">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item">Tables</li>
+        <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Action</th>
+
+                        </tr>
+                        </thead>
+
+                        {% if user.is_authenticated  or request.user %}
+                        {% for category in category_views %}
+
+                        <tbody>
+                        <tr>
+                            <td>{{ category.category_name }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="/stock/edit/{{ category.id }}"><i
+                                        class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn btn-primary" href="/stock/delete/{{ category.id }}"><i
+                                        class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

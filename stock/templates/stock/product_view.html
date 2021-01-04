@@ -1,0 +1,69 @@
+{% extends 'stock/base.html' %}
+{% block title %}
+Product
+{% endblock %}
+
+{% block content %}
+
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-th-list"></i> All User</h1>
+        <!--        <p>Parking exit to display analytical data effectively</p>-->
+    </div>
+    <ul class="app-breadcrumb breadcrumb side">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item">Tables</li>
+        <li class="breadcrumb-item active"><a href="#">Data Table</a></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Product Name</th>
+                            <th>Image </th>
+                            <th>Tag</th>
+                            <th>Description </th>
+                            <th>Action</th>
+
+                        </tr>
+                        </thead>
+
+                        {% if user.is_authenticated  or request.user %}
+                        {% for product in product_views %}
+
+                        <tbody>
+                        <tr>
+                            <td>{{ product.category_name }}</td>
+                            <td>{{ product.product_name }}</td>
+<!--                            <td>{{ product.product_image.url }}</td>-->
+                            <td>
+                            <img class="app-sidebar__user-avatar" src="{{product.product_image.url}}" height="40" , width="40" alt="product Image">
+                            </td>
+                            <td>{{ product.tags }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="/stock/productedit/{{ product.id }}"><i
+                                        class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn btn-primary" href="/stock/productdelete/{{ product.id }}"><i
+                                        class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                        {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

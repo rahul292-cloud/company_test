@@ -1,0 +1,127 @@
+{% extends 'stock/base.html' %}
+{% block title %}
+Product
+{% endblock %}
+
+{% block content %}
+
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-plus"></i> update Product</h1>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="tile">
+            <!--            <h3 class="tile-title">New Category Data</h3>-->
+            <div class="tile-body">
+<!--                <form method="POST" class="post-form" action="/stock/productupdate/{{edit.id}}" enctype="multipart/form-data">-->
+                <form class="form-horizontal" action="/stock/productupdate/{{edit.id}}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group row">
+
+                        <div class="form-group col-lg-8">
+                            <label for="exampleInputCategotyName">Categoty Name</label>
+                            <div id="exampleInputCategotyName">
+
+                                <select name="category" id="idcategory">
+                                    {% for category_name in category_model%}
+
+                                    <option value="{{category_name.id}}">{{category_name.category_name}}</option>
+                                     {% endfor %}
+<!--                                    <option value="saab">Saab</option>-->
+<!--                                    <option value="opel">Opel</option>-->
+<!--                                    <option value="audi">Audi</option>-->
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-8">
+                            <label for="exampleInputProductName">Product Name</label>
+                            <div id="exampleInputProductName">
+                                <input type="text" name="product_name" value="{{edit.product_name}}">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-8">
+                            <label for="exampleInputImageName">Product Image</label>
+                            <div id="exampleInputImageName">
+                                  <input type="file" name="product_image">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-8">
+                            <label for="exampleInputtags">Tags</label>
+                            <div id="exampleInputtags">
+<!--                                <select name="tags" size="3" multiple required id="idtags">-->
+                                    {% for tag in tags_model%}
+                                <input type="checkbox" name="{{tag.tag_name}}" value="{{tag.id}}">{{tag.tag_name}}
+<!--                                <input type="checkbox" name="tag_name" value="{{tag.id}}">{{tag.tag_name}}-->
+
+<!--                                    <option value="{{tag.id}}">{{tag.tag_name}}</option>-->
+<!--                                    <option value="saab">Saab</option>-->
+<!--                                    <option value="opel">Opel</option>-->
+<!--                                    <option value="audi">Audi</option>-->
+                                    {% endfor %}
+<!--                                </select>-->
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-8">
+                            <label for="exampleInputdescription">Description</label>
+                            <div id="exampleInputdescription">
+<!--                                <input type="text" name="description">-->
+                                <textarea name="description"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3">
+                                <button class="btn btn-primary" type="submit"><i
+                                        class="fa fa-fw fa-lg fa-check-circle"></i>Submit
+                                </button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"
+                                                              onClick="window.location.reload();">
+                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearix"></div>
+</div>
+
+
+
+<!--<form method="POST" class="post-form" action="/stock/update/{{edit.id}}">-->
+<!--    {% csrf_token %}-->
+<!--    <div class="container">-->
+<!--        <br>-->
+<!--        <div class="form-group row">-->
+<!--            <label class="col-sm-1 col-form-label"></label>-->
+<!--            <div class="col-sm-4">-->
+<!--                <h3>Update Details</h3>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="form-group row">-->
+<!--            <label class="col-sm-2 col-form-label">Category Name:</label>-->
+<!--            <div class="col-sm-4">-->
+<!--                <input type="text" name="categoryname" id="id_eid" required maxlength="20" value="{{ edit.category_name }}"/>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--       -->
+<!--        <div class="form-group row">-->
+<!--            <label class="col-sm-1 col-form-label"></label>-->
+<!--            <div class="col-sm-4">-->
+<!--                <button type="submit"  class="btn btn-success">Update</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+{% endblock %}

@@ -1,0 +1,220 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta name="description"
+          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <!-- Twitter meta-->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@pratikborsadiya">
+    <meta property="twitter:creator" content="@pratikborsadiya">
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vali Admin">
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
+    <meta property="og:description"
+          content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <title>
+        {% block title %}
+        Stock Management
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'stock/css/main.css' %}">
+
+
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+          integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous"/>
+    <!-- Font Awesome -->
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- Main CSS-->
+    <!-- Font-icon css-->
+
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="app sidebar-mini">
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="">{{request.user}}</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
+                                    aria-label="Hide Sidebar"></a>
+
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+
+<aside class="app-sidebar">
+
+    <ul class="app-menu">
+
+
+        </li>
+        <li><a class="app-menu__item" href="{% url 'stock' %}"><i class="app-menu__icon fa fa-file-code-o"></i><span
+                class="app-menu__label">Dashboard</span></a></li>
+
+
+        </li>
+
+
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                class="app-menu__icon fa fa-times-circle"></i><span class="app-menu__label">Profile</span><i
+                class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a class="app-menu__item" href="{% url 'userprofile' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">User Profile</span></a></li>
+
+                </li>
+<!--                <li><a class="app-menu__item" href="{% url 'alluserprofile' %}"><i-->
+<!--                        class="app-menu__icon fa fa-file-code-o"></i><span-->
+<!--                        class="app-menu__label">All User Profile</span></a></li>-->
+
+<!--                </li>-->
+                <li><a class="app-menu__item" href="{% url 'logout' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Logout</span></a></li>
+
+                </li>
+                <li><a class="app-menu__item" href="{% url 'login' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Login</span></a></li>
+
+                </li>
+                <li><a class="app-menu__item" href="{% url 'register' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Register User</span></a></li>
+
+            </ul>
+        </li>
+
+
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                class="app-menu__icon fa fa-building"></i><span class="app-menu__label">Tag</span><i
+                class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                </li>
+                <li><a class="app-menu__item" href="{% url 'tag' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Add</span></a></li>
+
+                </li>
+                <li><a class="app-menu__item" href="{% url 'tagview' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Manage</span></a></li>
+
+
+            </ul>
+        </li>
+
+
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                class="app-menu__icon fa fa-plus-circle"></i><span class="app-menu__label">Category</span><i
+                class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+
+                </li>
+                <li><a class="app-menu__item" href="{% url 'category' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Add</span></a></li>
+
+                </li>
+                <li><a class="app-menu__item" href="{% url 'view' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Manage</span></a></li>
+
+            </ul>
+        </li>
+
+
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i
+                class="app-menu__icon fa fa-building"></i><span class="app-menu__label">Product</span><i
+                class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                </li>
+                <li><a class="app-menu__item" href="{% url 'product' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Add</span></a></li>
+                <li><a class="app-menu__item" href="{% url 'productview' %}"><i
+                        class="app-menu__icon fa fa-file-code-o"></i><span
+                        class="app-menu__label">Manage</span></a></li>
+
+
+            </ul>
+        </li>
+
+
+    </ul>
+</aside>
+
+
+<main class="app-content">
+    {% block content %}
+
+    {% endblock %}
+</main>
+<!-- Essential javascripts for application to work-->
+{% block script %}
+<script src="{% static 'stock/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'stock/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'stock/js/main.js' %}"></script>
+<script src="{% static 'stock/js/popper.min.js' %}"></script>
+
+<!-- Load Leaflet from CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+<!-- The javascript plugin to display page loading on top-->
+
+<!--https://unpkg.com/@popperjs/core@2-->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+        integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+
+<script src="{% static 'stock/js/plugins/pace.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'stock/js/plugins/bootstrap-notify.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'stock/js/plugins/sweetalert.min.js'%}"></script>
+
+<!-- Page specific javascripts-->
+{% endblock %}
+<!-- Google analytics script-->
+<script type="text/javascript">
+      if(document.location.hostname == 'pratikborsadiya.in') {
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
+      }
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
